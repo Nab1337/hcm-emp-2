@@ -6,11 +6,11 @@
     <dl class="row-md jh-entity-details">
         <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.dateFrom">Date From</span></dt>
         <dd>
-            <span>{{emEmpSalaries.dateFrom | date:'mediumDate'}}</span>
+            <span>{{emEmpSalaries.dateFrom | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.dateTo">Date To</span></dt>
         <dd>
-            <span>{{emEmpSalaries.dateTo | date:'mediumDate'}}</span>
+            <span>{{emEmpSalaries.dateTo | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.salaryAmount">Salary Amount</span></dt>
         <dd>
@@ -46,16 +46,16 @@
                 <a [routerLink]="['/em-employees', emEmpSalaries.idEmployee?.id]">{{emEmpSalaries.idEmployee?.id}}</a>
             </div>
         </dd>
-        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.idWorkPlace">Id Work Place</span></dt>
-        <dd>
-            <div *ngIf="emEmpSalaries.idWorkPlace">
-                <a [routerLink]="['/og-work-places', emEmpSalaries.idWorkPlace?.id]">{{emEmpSalaries.idWorkPlace?.name}}</a>
-            </div>
-        </dd>
         <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.idContractType">Id Contract Type</span></dt>
         <dd>
             <div *ngIf="emEmpSalaries.idContractType">
-                <a [routerLink]="['/em-contract-types', emEmpSalaries.idContractType?.id]">{{emEmpSalaries.idContractType?.name}}</a>
+                <a [routerLink]="['/em-contract-types', emEmpSalaries.idContractType?.id]">{{emEmpSalaries.idContractType?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="hcmEmpApp.emEmpSalaries.idWorkPlace">Id Work Place</span></dt>
+        <dd>
+            <div *ngIf="emEmpSalaries.idWorkPlace">
+                <a [routerLink]="['/og-work-places', emEmpSalaries.idWorkPlace?.id]">{{emEmpSalaries.idWorkPlace?.id}}</a>
             </div>
         </dd>
     </dl>

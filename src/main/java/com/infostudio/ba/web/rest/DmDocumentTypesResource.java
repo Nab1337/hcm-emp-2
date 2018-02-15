@@ -6,14 +6,9 @@ import com.infostudio.ba.domain.DmDocumentTypes;
 import com.infostudio.ba.repository.DmDocumentTypesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
-import com.infostudio.ba.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,17 +81,14 @@ public class DmDocumentTypesResource {
     /**
      * GET  /dm-document-types : get all the dmDocumentTypes.
      *
-     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of dmDocumentTypes in body
      */
     @GetMapping("/dm-document-types")
     @Timed
-    public ResponseEntity<List<DmDocumentTypes>> getAllDmDocumentTypes(Pageable pageable) {
-        log.debug("REST request to get a page of DmDocumentTypes");
-        Page<DmDocumentTypes> page = dmDocumentTypesRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/dm-document-types");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
+    public List<DmDocumentTypes> getAllDmDocumentTypes() {
+        log.debug("REST request to get all DmDocumentTypes");
+        return dmDocumentTypesRepository.findAll();
+        }
 
     /**
      * GET  /dm-document-types/:id : get the "id" dmDocumentTypes.

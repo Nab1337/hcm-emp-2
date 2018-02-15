@@ -9,8 +9,8 @@ import { EmEmpSalariesDialogComponent } from '../../../../../../main/webapp/app/
 import { EmEmpSalariesService } from '../../../../../../main/webapp/app/entities/em-emp-salaries/em-emp-salaries.service';
 import { EmEmpSalaries } from '../../../../../../main/webapp/app/entities/em-emp-salaries/em-emp-salaries.model';
 import { EmEmployeesService } from '../../../../../../main/webapp/app/entities/em-employees';
-import { OgWorkPlacesService } from '../../../../../../main/webapp/app/entities/og-work-places';
 import { EmContractTypesService } from '../../../../../../main/webapp/app/entities/em-contract-types';
+import { OgWorkPlacesService } from '../../../../../../main/webapp/app/entities/og-work-places';
 
 describe('Component Tests', () => {
 
@@ -27,8 +27,8 @@ describe('Component Tests', () => {
                 declarations: [EmEmpSalariesDialogComponent],
                 providers: [
                     EmEmployeesService,
-                    OgWorkPlacesService,
                     EmContractTypesService,
+                    OgWorkPlacesService,
                     EmEmpSalariesService
                 ]
             })

@@ -6,7 +6,6 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -25,19 +24,20 @@ public class EmEmpSalaries implements Serializable {
 
     @NotNull
     @Column(name = "date_from", nullable = false)
-    private LocalDate dateFrom;
+    private Instant dateFrom;
 
-    @Column(name = "date_to")
-    private LocalDate dateTo;
+    @NotNull
+    @Column(name = "date_to", nullable = false)
+    private Instant dateTo;
 
     @Column(name = "salary_amount")
-    private Integer salaryAmount;
+    private Double salaryAmount;
 
     @Column(name = "salary_coefficient")
-    private Integer salaryCoefficient;
+    private Double salaryCoefficient;
 
     @Column(name = "work_history_coefficient")
-    private Integer workHistoryCoefficient;
+    private Double workHistoryCoefficient;
 
     @Column(name = "created_by")
     private String createdBy;
@@ -52,16 +52,16 @@ public class EmEmpSalaries implements Serializable {
     private Instant updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "ID_EMPLOYEE")
     private EmEmployees idEmployee;
 
     @OneToOne
-    @JoinColumn(name = "id_work_place")
-    private OgWorkPlaces idWorkPlace;
+    @JoinColumn(name = "ID_CONTRACT_TYPE")
+    private EmContractTypes idContractType;
 
     @OneToOne
-    @JoinColumn(name = "id_contract_type")
-    private EmContractTypes idContractType;
+    @JoinColumn(name = "ID_WORK_PLACE")
+    private OgWorkPlaces idWorkPlace;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -72,68 +72,68 @@ public class EmEmpSalaries implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getDateFrom() {
+    public Instant getDateFrom() {
         return dateFrom;
     }
 
-    public EmEmpSalaries dateFrom(LocalDate dateFrom) {
+    public EmEmpSalaries dateFrom(Instant dateFrom) {
         this.dateFrom = dateFrom;
         return this;
     }
 
-    public void setDateFrom(LocalDate dateFrom) {
+    public void setDateFrom(Instant dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public LocalDate getDateTo() {
+    public Instant getDateTo() {
         return dateTo;
     }
 
-    public EmEmpSalaries dateTo(LocalDate dateTo) {
+    public EmEmpSalaries dateTo(Instant dateTo) {
         this.dateTo = dateTo;
         return this;
     }
 
-    public void setDateTo(LocalDate dateTo) {
+    public void setDateTo(Instant dateTo) {
         this.dateTo = dateTo;
     }
 
-    public Integer getSalaryAmount() {
+    public Double getSalaryAmount() {
         return salaryAmount;
     }
 
-    public EmEmpSalaries salaryAmount(Integer salaryAmount) {
+    public EmEmpSalaries salaryAmount(Double salaryAmount) {
         this.salaryAmount = salaryAmount;
         return this;
     }
 
-    public void setSalaryAmount(Integer salaryAmount) {
+    public void setSalaryAmount(Double salaryAmount) {
         this.salaryAmount = salaryAmount;
     }
 
-    public Integer getSalaryCoefficient() {
+    public Double getSalaryCoefficient() {
         return salaryCoefficient;
     }
 
-    public EmEmpSalaries salaryCoefficient(Integer salaryCoefficient) {
+    public EmEmpSalaries salaryCoefficient(Double salaryCoefficient) {
         this.salaryCoefficient = salaryCoefficient;
         return this;
     }
 
-    public void setSalaryCoefficient(Integer salaryCoefficient) {
+    public void setSalaryCoefficient(Double salaryCoefficient) {
         this.salaryCoefficient = salaryCoefficient;
     }
 
-    public Integer getWorkHistoryCoefficient() {
+    public Double getWorkHistoryCoefficient() {
         return workHistoryCoefficient;
     }
 
-    public EmEmpSalaries workHistoryCoefficient(Integer workHistoryCoefficient) {
+    public EmEmpSalaries workHistoryCoefficient(Double workHistoryCoefficient) {
         this.workHistoryCoefficient = workHistoryCoefficient;
         return this;
     }
 
-    public void setWorkHistoryCoefficient(Integer workHistoryCoefficient) {
+    public void setWorkHistoryCoefficient(Double workHistoryCoefficient) {
         this.workHistoryCoefficient = workHistoryCoefficient;
     }
 
@@ -202,19 +202,6 @@ public class EmEmpSalaries implements Serializable {
         this.idEmployee = emEmployees;
     }
 
-    public OgWorkPlaces getIdWorkPlace() {
-        return idWorkPlace;
-    }
-
-    public EmEmpSalaries idWorkPlace(OgWorkPlaces ogWorkPlaces) {
-        this.idWorkPlace = ogWorkPlaces;
-        return this;
-    }
-
-    public void setIdWorkPlace(OgWorkPlaces ogWorkPlaces) {
-        this.idWorkPlace = ogWorkPlaces;
-    }
-
     public EmContractTypes getIdContractType() {
         return idContractType;
     }
@@ -226,6 +213,19 @@ public class EmEmpSalaries implements Serializable {
 
     public void setIdContractType(EmContractTypes emContractTypes) {
         this.idContractType = emContractTypes;
+    }
+
+    public OgWorkPlaces getIdWorkPlace() {
+        return idWorkPlace;
+    }
+
+    public EmEmpSalaries idWorkPlace(OgWorkPlaces ogWorkPlaces) {
+        this.idWorkPlace = ogWorkPlaces;
+        return this;
+    }
+
+    public void setIdWorkPlace(OgWorkPlaces ogWorkPlaces) {
+        this.idWorkPlace = ogWorkPlaces;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

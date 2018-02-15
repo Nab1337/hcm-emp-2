@@ -9,13 +9,13 @@
     <changeSet id="20180202093520-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="id_organization_id"
-                                 baseTableName="og_work_p"
+                                 baseTableName="og_org_work"
                                  constraintName="og_org_work_pl_id_organizati_id"
                                  referencedColumnNames="id"
                                  referencedTableName="og_organizations"/>
 
         <addForeignKeyConstraint baseColumnNames="id_work_place_id"
-                                 baseTableName="og_work_p"
+                                 baseTableName="og_org_work"
                                  constraintName="og_org_work_pl_id_work_place_id"
                                  referencedColumnNames="id"
                                  referencedTableName="og_work_places"/>

@@ -13,7 +13,6 @@ import {
     EmEmpAccomplishmentsDeleteDialogComponent,
     emEmpAccomplishmentsRoute,
     emEmpAccomplishmentsPopupRoute,
-    EmEmpAccomplishmentsResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         EmEmpAccomplishmentsService,
         EmEmpAccomplishmentsPopupService,
-        EmEmpAccomplishmentsResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -12,6 +12,21 @@
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="emEmpAccomplishments.id" readonly />
         </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.idAccomplishmentType" for="field_idAccomplishmentType">Id Accomplishment Type</label>
+            <select class="form-control" id="field_idAccomplishmentType" name="idAccomplishmentType" [(ngModel)]="emEmpAccomplishments.idAccomplishmentType" required>
+                <option [ngValue]="null"></option>
+                <option [ngValue]="atAccomplishmentTypesOption.id === emEmpAccomplishments.idAccomplishmentType?.id ? emEmpAccomplishments.idAccomplishmentType : atAccomplishmentTypesOption" *ngFor="let atAccomplishmentTypesOption of idaccomplishmenttypes; trackBy: trackAtAccomplishmentTypesById">{{atAccomplishmentTypesOption.name}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.idAccomplishmentType?.dirty && editForm.controls.idAccomplishmentType?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.title" for="field_title">Title</label>
             <input type="text" class="form-control" name="title" id="field_title"
@@ -93,45 +108,8 @@
             <input type="number" class="form-control" name="rating" id="field_rating"
                 [(ngModel)]="emEmpAccomplishments.rating" />
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdBy" for="field_createdBy">Created By</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="emEmpAccomplishments.createdBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdAt" for="field_createdAt">Created At</label>
-            <div class="d-flex">
-                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="emEmpAccomplishments.createdAt"
-                />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedBy" for="field_updatedBy">Updated By</label>
-            <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
-                [(ngModel)]="emEmpAccomplishments.updatedBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedAt" for="field_updatedAt">Updated At</label>
-            <div class="d-flex">
-                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="emEmpAccomplishments.updatedAt"
-                />
-            </div>
-        </div>
 
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.idEmployee" for="field_idEmployee">Id Employee</label>
-            <select class="form-control" id="field_idEmployee" name="idEmployee" [(ngModel)]="emEmpAccomplishments.idEmployee">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="emEmployeesOption.id === emEmpAccomplishments.idEmployee?.id ? emEmpAccomplishments.idEmployee : emEmployeesOption" *ngFor="let emEmployeesOption of idemployees; trackBy: trackEmEmployeesById">{{emEmployeesOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcmEmpApp.emEmpAccomplishments.idAccomplishmentType" for="field_idAccomplishmentType">Id Accomplishment Type</label>
-            <select class="form-control" id="field_idAccomplishmentType" name="idAccomplishmentType" [(ngModel)]="emEmpAccomplishments.idAccomplishmentType">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="atAccomplishmentTypesOption.id === emEmpAccomplishments.idAccomplishmentType?.id ? emEmpAccomplishments.idAccomplishmentType : atAccomplishmentTypesOption" *ngFor="let atAccomplishmentTypesOption of idaccomplishmenttypes; trackBy: trackAtAccomplishmentTypesById">{{atAccomplishmentTypesOption.name}}</option>
-            </select>
-        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

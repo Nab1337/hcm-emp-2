@@ -40,7 +40,7 @@
     "changelogDate": "20180126144202",
     "entityTableName": "le_legal_entity_types",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

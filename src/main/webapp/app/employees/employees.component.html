@@ -112,40 +112,16 @@
                 </div>
             </div>
 
-            <jhi-employees-list></jhi-employees-list>
+            <jhi-employees-list [page] = "page" [predicate] = "predicate" [previousPage] = "previousPage" [reverse] = "reverse"></jhi-employees-list>
 
 
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-3 p-t-20 m-r-0 m-l-0">
-                        Show
-                        <select>
-                            <option selected="selected">5</option>
-                            <option>10</option>
-                            <option>15</option>
-                            <option>20</option>
-                            <option>25</option>
-                            <option>30</option>
-                        </select>
-                        results per page.
-                    </div>
-                    <div class="col-md-9 m-r-0 m-l-0">
-                        <div class="pull-right">
-
-                            <ul class="pagination m-b-0">
-                                <li class="disabled"> <a href="#"><i class="fa fa-angle-left"></i></a> </li>
-                                <li> <a href="#">1</a> </li>
-                                <li class="active"> <a href="#">2</a> </li>
-                                <li> <a href="#">3</a> </li>
-                                <li> <a href="#">4</a> </li>
-                                <li> <a href="#">5</a> </li>
-                                <li> <a href="#"><i class="fa fa-angle-right"></i></a> </li>
-                            </ul>
-                        </div>
-                    </div>
+            <div *ngIf="emEmployees && emEmployees.length">
+                <div class="row justify-content-center">
+                    <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
                 </div>
-
+                <div class="row justify-content-center">
+                    <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+                </div>
             </div>
         </div>
         <!-- /.row -->

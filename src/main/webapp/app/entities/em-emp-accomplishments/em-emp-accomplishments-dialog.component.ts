@@ -12,6 +12,7 @@ import { EmEmpAccomplishmentsService } from './em-emp-accomplishments.service';
 import { EmEmployees, EmEmployeesService } from '../em-employees';
 import { AtAccomplishmentTypes, AtAccomplishmentTypesService } from '../at-accomplishment-types';
 import { ResponseWrapper } from '../../shared';
+import {Principal} from "../../shared/auth/principal.service";
 
 @Component({
     selector: 'jhi-em-emp-accomplishments-dialog',
@@ -21,6 +22,8 @@ export class EmEmpAccomplishmentsDialogComponent implements OnInit {
 
     emEmpAccomplishments: EmEmpAccomplishments;
     isSaving: boolean;
+    currentAccount: any;
+    employee: EmEmployees;
 
     idemployees: EmEmployees[];
 
@@ -34,7 +37,8 @@ export class EmEmpAccomplishmentsDialogComponent implements OnInit {
         private emEmpAccomplishmentsService: EmEmpAccomplishmentsService,
         private emEmployeesService: EmEmployeesService,
         private atAccomplishmentTypesService: AtAccomplishmentTypesService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal
     ) {
     }
 
@@ -66,6 +70,13 @@ export class EmEmpAccomplishmentsDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
+
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+            this.emEmployeesService.findByUser(this.currentAccount.id).subscribe((emEmployees) => {
+                this.employee = emEmployees;
+            });
+        });
     }
 
     clear() {
@@ -74,6 +85,7 @@ export class EmEmpAccomplishmentsDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.emEmpAccomplishments.idEmployee = this.employee;
         if (this.emEmpAccomplishments.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.emEmpAccomplishmentsService.update(this.emEmpAccomplishments));

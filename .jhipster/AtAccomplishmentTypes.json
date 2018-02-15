@@ -40,7 +40,7 @@
     "changelogDate": "20180202093526",
     "entityTableName": "at_accomplishment_types",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

@@ -13,7 +13,6 @@ import {
     EmEmpTypesDeleteDialogComponent,
     emEmpTypesRoute,
     emEmpTypesPopupRoute,
-    EmEmpTypesResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         EmEmpTypesService,
         EmEmpTypesPopupService,
-        EmEmpTypesResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

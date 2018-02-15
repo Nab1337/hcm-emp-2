@@ -13,7 +13,6 @@ import {
     LeLegalEntityTypesDeleteDialogComponent,
     leLegalEntityTypesRoute,
     leLegalEntityTypesPopupRoute,
-    LeLegalEntityTypesResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         LeLegalEntityTypesService,
         LeLegalEntityTypesPopupService,
-        LeLegalEntityTypesResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

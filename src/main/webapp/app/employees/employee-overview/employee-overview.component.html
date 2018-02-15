@@ -56,13 +56,13 @@
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'job'" id="job">
                 <div id="dataScrollExp">
-                    <jhi-emp-job-experience></jhi-emp-job-experience>
-                    <jhi-emp-payroll-changes></jhi-emp-payroll-changes>
+                    <jhi-emp-job-experience [isEditable]="isEditable" [employeeId]="employee.id"></jhi-emp-job-experience>
+                    <jhi-emp-payroll-changes [employeeId]="employee.id"></jhi-emp-payroll-changes>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'education'" id="education">
                 <div id="dataScrollEdu">
-                    <jhi-emp-education></jhi-emp-education>
+                    <jhi-emp-education [employeeId]="employee.id" [isEditable] = "isEditable"></jhi-emp-education>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'training'" id="training">
@@ -72,7 +72,7 @@
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'accomplishments'" id="acomplishments">
                 <div id="dataScrollAcc">
-                    <jhi-emp-accomplishments></jhi-emp-accomplishments>
+                    <jhi-emp-accomplishments [isEditable]="isEditable" [employeeId]="employee.id"></jhi-emp-accomplishments>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" [class.active]="tabState == 'documents'" id="documents">

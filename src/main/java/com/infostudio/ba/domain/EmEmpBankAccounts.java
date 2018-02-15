@@ -42,11 +42,11 @@ public class EmEmpBankAccounts implements Serializable {
     private Instant updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "ID_EMPLOYEE")
     private EmEmployees idEmployee;
 
     @OneToOne
-    @JoinColumn(name = "id_bank")
+    @JoinColumn(name = "ID_BANK")
     private LeLegalEntities idBank;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

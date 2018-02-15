@@ -22,10 +22,7 @@
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.documentBlob">Document Blob</span></dt>
         <dd>
-            <div *ngIf="dmDocumentLinks.documentBlob">
-                <a (click)="openFile(dmDocumentLinks.documentBlobContentType, dmDocumentLinks.documentBlob)" jhiTranslate="entity.action.open">open</a>
-                {{dmDocumentLinks.documentBlobContentType}}, {{byteSize(dmDocumentLinks.documentBlob)}}
-            </div>
+            <span>{{dmDocumentLinks.documentBlob}}</span>
         </dd>
         <dt><span jhiTranslate="hcmEmpApp.dmDocumentLinks.createdBy">Created By</span></dt>
         <dd>

@@ -26,7 +26,7 @@ public class EmEmpNotes implements Serializable {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "description")
+    @Column(name = "decsription")
     private String decsription;
 
     @Column(name = "created_by")
@@ -42,7 +42,7 @@ public class EmEmpNotes implements Serializable {
     private Instant updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "ID_EMPLOYEE")
     private EmEmployees idEmployee;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

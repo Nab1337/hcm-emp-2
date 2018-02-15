@@ -270,7 +270,7 @@ entity DmDocumentLinks{
     fileName String,
     filePath String,
     uri String,
-    documentBlob Blob,
+    documentBlob String,
     createdBy String,
     createdAt Instant,
     updatedBy String,
@@ -312,6 +312,7 @@ entity EmEmpNotes {
 }
 
 
+
 relationship OneToOne {
 	EmEmpNotes{idEmployee} to EmEmployees
 	EmEmpDocuments{idEmployee} to EmEmployees
@@ -351,4 +352,4 @@ relationship OneToOne {
 	OgWorkPlaces{idParent(name)} to OgWorkPlaces
 }
 
-paginate * with pagination
+paginate EmEmployees,OgOrganizations,RgQualifications,RgRegionTypes,RgRegions,RgSchools with pagination

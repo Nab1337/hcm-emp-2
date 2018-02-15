@@ -39,7 +39,7 @@
     "changelogDate": "20180202093520",
     "entityTableName": "og_org_work_places",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

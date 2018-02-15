@@ -38,6 +38,12 @@ export class EmEmpAccomplishmentsService {
         });
     }
 
+    queryByEmployee(empId: number, req?: any): Observable<ResponseWrapper> {
+        const options = createRequestOption(req);
+        return this.http.get(this.resourceUrl + '/byEmployee/' + empId, options)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
         return this.http.get(this.resourceUrl, options)

@@ -4,7 +4,7 @@ import { Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { DmDocumentLinks } from './dm-document-links.model';
 import { DmDocumentLinksPopupService } from './dm-document-links-popup.service';
@@ -21,7 +21,6 @@ export class DmDocumentLinksDialogComponent implements OnInit {
 
     constructor(
         public activeModal: NgbActiveModal,
-        private dataUtils: JhiDataUtils,
         private dmDocumentLinksService: DmDocumentLinksService,
         private eventManager: JhiEventManager
     ) {
@@ -29,18 +28,6 @@ export class DmDocumentLinksDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-    }
-
-    byteSize(field) {
-        return this.dataUtils.byteSize(field);
-    }
-
-    openFile(contentType, field) {
-        return this.dataUtils.openFile(contentType, field);
-    }
-
-    setFileData(event, entity, field, isImage) {
-        this.dataUtils.setFileData(event, entity, field, isImage);
     }
 
     clear() {

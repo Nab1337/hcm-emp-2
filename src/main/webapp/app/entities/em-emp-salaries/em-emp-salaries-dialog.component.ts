@@ -10,8 +10,8 @@ import { EmEmpSalaries } from './em-emp-salaries.model';
 import { EmEmpSalariesPopupService } from './em-emp-salaries-popup.service';
 import { EmEmpSalariesService } from './em-emp-salaries.service';
 import { EmEmployees, EmEmployeesService } from '../em-employees';
-import { OgWorkPlaces, OgWorkPlacesService } from '../og-work-places';
 import { EmContractTypes, EmContractTypesService } from '../em-contract-types';
+import { OgWorkPlaces, OgWorkPlacesService } from '../og-work-places';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -25,19 +25,17 @@ export class EmEmpSalariesDialogComponent implements OnInit {
 
     idemployees: EmEmployees[];
 
-    idworkplaces: OgWorkPlaces[];
-
     idcontracttypes: EmContractTypes[];
-    dateFromDp: any;
-    dateToDp: any;
+
+    idworkplaces: OgWorkPlaces[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private emEmpSalariesService: EmEmpSalariesService,
         private emEmployeesService: EmEmployeesService,
-        private ogWorkPlacesService: OgWorkPlacesService,
         private emContractTypesService: EmContractTypesService,
+        private ogWorkPlacesService: OgWorkPlacesService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -57,19 +55,6 @@ export class EmEmpSalariesDialogComponent implements OnInit {
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
-        this.ogWorkPlacesService
-            .query({filter: 'emempsalaries-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.emEmpSalaries.idWorkPlace || !this.emEmpSalaries.idWorkPlace.id) {
-                    this.idworkplaces = res.json;
-                } else {
-                    this.ogWorkPlacesService
-                        .find(this.emEmpSalaries.idWorkPlace.id)
-                        .subscribe((subRes: OgWorkPlaces) => {
-                            this.idworkplaces = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
         this.emContractTypesService
             .query({filter: 'emempsalaries-is-null'})
             .subscribe((res: ResponseWrapper) => {
@@ -80,6 +65,19 @@ export class EmEmpSalariesDialogComponent implements OnInit {
                         .find(this.emEmpSalaries.idContractType.id)
                         .subscribe((subRes: EmContractTypes) => {
                             this.idcontracttypes = [subRes].concat(res.json);
+                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
+                }
+            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.ogWorkPlacesService
+            .query({filter: 'emempsalaries-is-null'})
+            .subscribe((res: ResponseWrapper) => {
+                if (!this.emEmpSalaries.idWorkPlace || !this.emEmpSalaries.idWorkPlace.id) {
+                    this.idworkplaces = res.json;
+                } else {
+                    this.ogWorkPlacesService
+                        .find(this.emEmpSalaries.idWorkPlace.id)
+                        .subscribe((subRes: OgWorkPlaces) => {
+                            this.idworkplaces = [subRes].concat(res.json);
                         }, (subRes: ResponseWrapper) => this.onError(subRes.json));
                 }
             }, (res: ResponseWrapper) => this.onError(res.json));
@@ -123,11 +121,11 @@ export class EmEmpSalariesDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackOgWorkPlacesById(index: number, item: OgWorkPlaces) {
+    trackEmContractTypesById(index: number, item: EmContractTypes) {
         return item.id;
     }
 
-    trackEmContractTypesById(index: number, item: EmContractTypes) {
+    trackOgWorkPlacesById(index: number, item: OgWorkPlaces) {
         return item.id;
     }
 }

@@ -13,5 +13,4 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface EmEmpOrgWorkPlacesRepository extends JpaRepository<EmEmpOrgWorkPlaces, Long> {
     EmEmpOrgWorkPlaces findTopByIdEmployeeIdOrderByDateFromDesc(Long id);
-
 }

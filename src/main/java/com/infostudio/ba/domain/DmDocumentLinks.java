@@ -33,12 +33,8 @@ public class DmDocumentLinks implements Serializable {
     @Column(name = "uri")
     private String uri;
 
-    @Lob
     @Column(name = "document_blob")
-    private byte[] documentBlob;
-
-//    @Column(name = "document_blob_content_type")
-//    private String documentBlobContentType;
+    private String documentBlob;
 
     @Column(name = "created_by")
     private String createdBy;
@@ -113,31 +109,18 @@ public class DmDocumentLinks implements Serializable {
         this.uri = uri;
     }
 
-    public byte[] getDocumentBlob() {
+    public String getDocumentBlob() {
         return documentBlob;
     }
 
-    public DmDocumentLinks documentBlob(byte[] documentBlob) {
+    public DmDocumentLinks documentBlob(String documentBlob) {
         this.documentBlob = documentBlob;
         return this;
     }
 
-    public void setDocumentBlob(byte[] documentBlob) {
+    public void setDocumentBlob(String documentBlob) {
         this.documentBlob = documentBlob;
     }
-
-//    public String getDocumentBlobContentType() {
-//        return documentBlobContentType;
-//    }
-//
-//    public DmDocumentLinks documentBlobContentType(String documentBlobContentType) {
-//        this.documentBlobContentType = documentBlobContentType;
-//        return this;
-//    }
-//
-//    public void setDocumentBlobContentType(String documentBlobContentType) {
-//        this.documentBlobContentType = documentBlobContentType;
-//    }
 
     public String getCreatedBy() {
         return createdBy;
@@ -221,7 +204,6 @@ public class DmDocumentLinks implements Serializable {
             ", filePath='" + getFilePath() + "'" +
             ", uri='" + getUri() + "'" +
             ", documentBlob='" + getDocumentBlob() + "'" +
-//            ", documentBlobContentType='" + getDocumentBlobContentType() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedBy='" + getUpdatedBy() + "'" +

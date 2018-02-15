@@ -13,7 +13,6 @@ import {
     AtAccomplishmentTypesDeleteDialogComponent,
     atAccomplishmentTypesRoute,
     atAccomplishmentTypesPopupRoute,
-    AtAccomplishmentTypesResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         AtAccomplishmentTypesService,
         AtAccomplishmentTypesPopupService,
-        AtAccomplishmentTypesResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

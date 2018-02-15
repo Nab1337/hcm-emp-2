@@ -13,8 +13,8 @@ export class EmEmpSalaries implements BaseEntity {
         public updatedBy?: string,
         public updatedAt?: any,
         public idEmployee?: BaseEntity,
-        public idWorkPlace?: BaseEntity,
         public idContractType?: BaseEntity,
+        public idWorkPlace?: BaseEntity,
     ) {
     }
 }

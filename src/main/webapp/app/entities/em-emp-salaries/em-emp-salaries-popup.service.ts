@@ -28,20 +28,10 @@ export class EmEmpSalariesPopupService {
 
             if (id) {
                 this.emEmpSalariesService.find(id).subscribe((emEmpSalaries) => {
-                    if (emEmpSalaries.dateFrom) {
-                        emEmpSalaries.dateFrom = {
-                            year: emEmpSalaries.dateFrom.getFullYear(),
-                            month: emEmpSalaries.dateFrom.getMonth() + 1,
-                            day: emEmpSalaries.dateFrom.getDate()
-                        };
-                    }
-                    if (emEmpSalaries.dateTo) {
-                        emEmpSalaries.dateTo = {
-                            year: emEmpSalaries.dateTo.getFullYear(),
-                            month: emEmpSalaries.dateTo.getMonth() + 1,
-                            day: emEmpSalaries.dateTo.getDate()
-                        };
-                    }
+                    emEmpSalaries.dateFrom = this.datePipe
+                        .transform(emEmpSalaries.dateFrom, 'yyyy-MM-ddTHH:mm:ss');
+                    emEmpSalaries.dateTo = this.datePipe
+                        .transform(emEmpSalaries.dateTo, 'yyyy-MM-ddTHH:mm:ss');
                     emEmpSalaries.createdAt = this.datePipe
                         .transform(emEmpSalaries.createdAt, 'yyyy-MM-ddTHH:mm:ss');
                     emEmpSalaries.updatedAt = this.datePipe

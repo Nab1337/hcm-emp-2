@@ -46,11 +46,11 @@ public class OgWorkPlaces implements Serializable {
     private Instant updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "id_work_place_type")
+    @JoinColumn(name = "ID_WORK_PLACE_TYPE")
     private OgWorkPlaceTypes idWorkPlaceType;
 
     @OneToOne
-    @JoinColumn(name = "id_parent")
+    @JoinColumn(name = "ID_PARENT")
     private OgWorkPlaces idParent;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

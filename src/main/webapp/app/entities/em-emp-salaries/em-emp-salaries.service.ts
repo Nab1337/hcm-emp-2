@@ -44,6 +44,12 @@ export class EmEmpSalariesService {
             .map((res: Response) => this.convertResponse(res));
     }
 
+    queryByEmployee(employeeId: number, req?: any): Observable<ResponseWrapper> {
+        const options = createRequestOption(req);
+        return this.http.get(this.resourceUrl + '/employee/' + employeeId, options)
+            .map((res: Response) => this.convertResponse(res));
+    }
+
     delete(id: number): Observable<Response> {
         return this.http.delete(`${this.resourceUrl}/${id}`);
     }
@@ -63,9 +69,9 @@ export class EmEmpSalariesService {
     private convertItemFromServer(json: any): EmEmpSalaries {
         const entity: EmEmpSalaries = Object.assign(new EmEmpSalaries(), json);
         entity.dateFrom = this.dateUtils
-            .convertLocalDateFromServer(json.dateFrom);
+            .convertDateTimeFromServer(json.dateFrom);
         entity.dateTo = this.dateUtils
-            .convertLocalDateFromServer(json.dateTo);
+            .convertDateTimeFromServer(json.dateTo);
         entity.createdAt = this.dateUtils
             .convertDateTimeFromServer(json.createdAt);
         entity.updatedAt = this.dateUtils
@@ -78,10 +84,10 @@ export class EmEmpSalariesService {
      */
     private convert(emEmpSalaries: EmEmpSalaries): EmEmpSalaries {
         const copy: EmEmpSalaries = Object.assign({}, emEmpSalaries);
-        copy.dateFrom = this.dateUtils
-            .convertLocalDateToServer(emEmpSalaries.dateFrom);
-        copy.dateTo = this.dateUtils
-            .convertLocalDateToServer(emEmpSalaries.dateTo);
+
+        copy.dateFrom = this.dateUtils.toDate(emEmpSalaries.dateFrom);
+
+        copy.dateTo = this.dateUtils.toDate(emEmpSalaries.dateTo);
 
         copy.createdAt = this.dateUtils.toDate(emEmpSalaries.createdAt);
 

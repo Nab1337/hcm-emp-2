@@ -9,13 +9,13 @@
     <changeSet id="20180202093517-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="id_employee_id"
-                                 baseTableName="em_ban_acc"
+                                 baseTableName="em_emp_bank_ac"
                                  constraintName="em_emp_bank_ac_id_employee_id"
                                  referencedColumnNames="id"
                                  referencedTableName="em_employees"/>
 
         <addForeignKeyConstraint baseColumnNames="id_bank_id"
-                                 baseTableName="em_ban_acc"
+                                 baseTableName="em_emp_bank_ac"
                                  constraintName="em_emp_bank_ac_id_bank_id"
                                  referencedColumnNames="id"
                                  referencedTableName="le_legal_entities"/>

@@ -13,7 +13,6 @@ import {
     DmDocumentLinksDeleteDialogComponent,
     dmDocumentLinksRoute,
     dmDocumentLinksPopupRoute,
-    DmDocumentLinksResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         DmDocumentLinksService,
         DmDocumentLinksPopupService,
-        DmDocumentLinksResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

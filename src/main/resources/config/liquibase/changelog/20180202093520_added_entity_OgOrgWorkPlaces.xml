@@ -17,7 +17,7 @@
         Added the entity OgOrgWorkPlaces.
     -->
     <changeSet id="20180202093520-1" author="jhipster">
-        <createTable tableName="og_work_p">
+        <createTable tableName="og_org_work">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -43,8 +43,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="og_work_p" columnName="created_at" columnDataType="datetime"/>
-        <dropDefaultValue tableName="og_work_p" columnName="updated_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="og_org_work" columnName="created_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="og_org_work" columnName="updated_at" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

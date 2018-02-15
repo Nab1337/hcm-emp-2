@@ -9,19 +9,19 @@
     <changeSet id="20180202093522-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="id_employee_id"
-                                 baseTableName="em_org_wp"
+                                 baseTableName="em_emp_org"
                                  constraintName="em_emp_org_wor_id_employee_id"
                                  referencedColumnNames="id"
                                  referencedTableName="em_employees"/>
 
         <addForeignKeyConstraint baseColumnNames="id_contract_type_id"
-                                 baseTableName="em_org_wp"
+                                 baseTableName="em_emp_org"
                                  constraintName="em_emp_org_wor_id_contract_t_id"
                                  referencedColumnNames="id"
                                  referencedTableName="em_contract_types"/>
 
         <addForeignKeyConstraint baseColumnNames="id_org_work_place_id"
-                                 baseTableName="em_org_wp"
+                                 baseTableName="em_emp_org"
                                  constraintName="em_emp_org_wor_id_org_work_p_id"
                                  referencedColumnNames="id"
                                  referencedTableName="og_org_work_places"/>

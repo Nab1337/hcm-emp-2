@@ -6,14 +6,9 @@ import com.infostudio.ba.domain.OgOrgWorkPlaces;
 import com.infostudio.ba.repository.OgOrgWorkPlacesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
-import com.infostudio.ba.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -85,17 +80,14 @@ public class OgOrgWorkPlacesResource {
     /**
      * GET  /og-org-work-places : get all the ogOrgWorkPlaces.
      *
-     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of ogOrgWorkPlaces in body
      */
     @GetMapping("/og-org-work-places")
     @Timed
-    public ResponseEntity<List<OgOrgWorkPlaces>> getAllOgOrgWorkPlaces(Pageable pageable) {
-        log.debug("REST request to get a page of OgOrgWorkPlaces");
-        Page<OgOrgWorkPlaces> page = ogOrgWorkPlacesRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/og-org-work-places");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
+    public List<OgOrgWorkPlaces> getAllOgOrgWorkPlaces() {
+        log.debug("REST request to get all OgOrgWorkPlaces");
+        return ogOrgWorkPlacesRepository.findAll();
+        }
 
     /**
      * GET  /og-org-work-places/:id : get the "id" ogOrgWorkPlaces.

@@ -40,7 +40,7 @@
     "changelogDate": "20180202093529",
     "entityTableName": "dm_document_types",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

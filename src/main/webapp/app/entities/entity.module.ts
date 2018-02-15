@@ -25,6 +25,7 @@ import { HcmEmpDmDocumentLinksModule } from './dm-document-links/dm-document-lin
 import { HcmEmpDmDocumentTypesModule } from './dm-document-types/dm-document-types.module';
 import { HcmEmpEmEmpDocumentsModule } from './em-emp-documents/em-emp-documents.module';
 import { HcmEmpEmEmpNotesModule } from './em-emp-notes/em-emp-notes.module';
+import { HcmEmpEmEmpPreviousJobsModule } from './em-emp-previous-jobs/em-emp-previous-jobs.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -54,6 +55,7 @@ import { HcmEmpEmEmpNotesModule } from './em-emp-notes/em-emp-notes.module';
         HcmEmpDmDocumentTypesModule,
         HcmEmpEmEmpDocumentsModule,
         HcmEmpEmEmpNotesModule,
+        HcmEmpEmEmpPreviousJobsModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

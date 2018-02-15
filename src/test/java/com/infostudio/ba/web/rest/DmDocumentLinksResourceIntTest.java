@@ -19,7 +19,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.time.Instant;
@@ -53,10 +52,8 @@ public class DmDocumentLinksResourceIntTest {
     private static final String DEFAULT_URI = "AAAAAAAAAA";
     private static final String UPDATED_URI = "BBBBBBBBBB";
 
-    private static final byte[] DEFAULT_DOCUMENT_BLOB = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_DOCUMENT_BLOB = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_DOCUMENT_BLOB_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_DOCUMENT_BLOB_CONTENT_TYPE = "image/png";
+    private static final String DEFAULT_DOCUMENT_BLOB = "AAAAAAAAAA";
+    private static final String UPDATED_DOCUMENT_BLOB = "BBBBBBBBBB";
 
     private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
@@ -113,7 +110,6 @@ public class DmDocumentLinksResourceIntTest {
             .filePath(DEFAULT_FILE_PATH)
             .uri(DEFAULT_URI)
             .documentBlob(DEFAULT_DOCUMENT_BLOB)
-            .documentBlobContentType(DEFAULT_DOCUMENT_BLOB_CONTENT_TYPE)
             .createdBy(DEFAULT_CREATED_BY)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedBy(DEFAULT_UPDATED_BY)
@@ -146,7 +142,6 @@ public class DmDocumentLinksResourceIntTest {
         assertThat(testDmDocumentLinks.getFilePath()).isEqualTo(DEFAULT_FILE_PATH);
         assertThat(testDmDocumentLinks.getUri()).isEqualTo(DEFAULT_URI);
         assertThat(testDmDocumentLinks.getDocumentBlob()).isEqualTo(DEFAULT_DOCUMENT_BLOB);
-        assertThat(testDmDocumentLinks.getDocumentBlobContentType()).isEqualTo(DEFAULT_DOCUMENT_BLOB_CONTENT_TYPE);
         assertThat(testDmDocumentLinks.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
         assertThat(testDmDocumentLinks.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testDmDocumentLinks.getUpdatedBy()).isEqualTo(DEFAULT_UPDATED_BY);
@@ -187,8 +182,7 @@ public class DmDocumentLinksResourceIntTest {
             .andExpect(jsonPath("$.[*].fileName").value(hasItem(DEFAULT_FILE_NAME.toString())))
             .andExpect(jsonPath("$.[*].filePath").value(hasItem(DEFAULT_FILE_PATH.toString())))
             .andExpect(jsonPath("$.[*].uri").value(hasItem(DEFAULT_URI.toString())))
-            .andExpect(jsonPath("$.[*].documentBlobContentType").value(hasItem(DEFAULT_DOCUMENT_BLOB_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].documentBlob").value(hasItem(Base64Utils.encodeToString(DEFAULT_DOCUMENT_BLOB))))
+            .andExpect(jsonPath("$.[*].documentBlob").value(hasItem(DEFAULT_DOCUMENT_BLOB.toString())))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY.toString())))
@@ -210,8 +204,7 @@ public class DmDocumentLinksResourceIntTest {
             .andExpect(jsonPath("$.fileName").value(DEFAULT_FILE_NAME.toString()))
             .andExpect(jsonPath("$.filePath").value(DEFAULT_FILE_PATH.toString()))
             .andExpect(jsonPath("$.uri").value(DEFAULT_URI.toString()))
-            .andExpect(jsonPath("$.documentBlobContentType").value(DEFAULT_DOCUMENT_BLOB_CONTENT_TYPE))
-            .andExpect(jsonPath("$.documentBlob").value(Base64Utils.encodeToString(DEFAULT_DOCUMENT_BLOB)))
+            .andExpect(jsonPath("$.documentBlob").value(DEFAULT_DOCUMENT_BLOB.toString()))
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY.toString()))
@@ -243,7 +236,6 @@ public class DmDocumentLinksResourceIntTest {
             .filePath(UPDATED_FILE_PATH)
             .uri(UPDATED_URI)
             .documentBlob(UPDATED_DOCUMENT_BLOB)
-            .documentBlobContentType(UPDATED_DOCUMENT_BLOB_CONTENT_TYPE)
             .createdBy(UPDATED_CREATED_BY)
             .createdAt(UPDATED_CREATED_AT)
             .updatedBy(UPDATED_UPDATED_BY)
@@ -263,7 +255,6 @@ public class DmDocumentLinksResourceIntTest {
         assertThat(testDmDocumentLinks.getFilePath()).isEqualTo(UPDATED_FILE_PATH);
         assertThat(testDmDocumentLinks.getUri()).isEqualTo(UPDATED_URI);
         assertThat(testDmDocumentLinks.getDocumentBlob()).isEqualTo(UPDATED_DOCUMENT_BLOB);
-        assertThat(testDmDocumentLinks.getDocumentBlobContentType()).isEqualTo(UPDATED_DOCUMENT_BLOB_CONTENT_TYPE);
         assertThat(testDmDocumentLinks.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
         assertThat(testDmDocumentLinks.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testDmDocumentLinks.getUpdatedBy()).isEqualTo(UPDATED_UPDATED_BY);

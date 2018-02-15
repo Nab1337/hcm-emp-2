@@ -40,7 +40,7 @@
     "changelogDate": "20180201161835",
     "entityTableName": "em_statuses",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

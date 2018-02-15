@@ -6,14 +6,9 @@ import com.infostudio.ba.domain.EmEmpOrgWorkPlaces;
 import com.infostudio.ba.repository.EmEmpOrgWorkPlacesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
-import com.infostudio.ba.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,17 +81,14 @@ public class EmEmpOrgWorkPlacesResource {
     /**
      * GET  /em-emp-org-work-places : get all the emEmpOrgWorkPlaces.
      *
-     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of emEmpOrgWorkPlaces in body
      */
     @GetMapping("/em-emp-org-work-places")
     @Timed
-    public ResponseEntity<List<EmEmpOrgWorkPlaces>> getAllEmEmpOrgWorkPlaces(Pageable pageable) {
-        log.debug("REST request to get a page of EmEmpOrgWorkPlaces");
-        Page<EmEmpOrgWorkPlaces> page = emEmpOrgWorkPlacesRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/em-emp-org-work-places");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
+    public List<EmEmpOrgWorkPlaces> getAllEmEmpOrgWorkPlaces() {
+        log.debug("REST request to get all EmEmpOrgWorkPlaces");
+        return emEmpOrgWorkPlacesRepository.findAll();
+        }
 
     /**
      * GET  /em-emp-org-work-places/:id : get the "id" emEmpOrgWorkPlaces.

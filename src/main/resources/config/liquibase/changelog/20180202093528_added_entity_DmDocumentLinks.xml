@@ -37,10 +37,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="document_blob" type="blob">
-                <constraints nullable="true" />
-            </column>
-            <column name="document_blob_content_type" type="varchar(255)">
+            <column name="document_blob" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

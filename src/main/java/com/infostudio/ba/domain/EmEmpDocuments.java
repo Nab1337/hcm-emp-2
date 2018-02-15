@@ -53,15 +53,15 @@ public class EmEmpDocuments implements Serializable {
     private Instant updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "ID_EMPLOYEE")
     private EmEmployees idEmployee;
 
     @OneToOne
-    @JoinColumn(name = "id_document_type")
+    @JoinColumn(name = "ID_DOCUMENT_TYPE")
     private DmDocumentTypes idDocumentType;
 
     @OneToOne
-    @JoinColumn(name = "id_document_link")
+    @JoinColumn(name = "ID_DOCUMENT_LINK")
     private DmDocumentLinks idDocumentLink;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -46,15 +46,15 @@ public class EmEmpOrgWorkPlaces implements Serializable {
     private Instant updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "ID_EMPLOYEE")
     private EmEmployees idEmployee;
 
     @OneToOne
-    @JoinColumn(name = "id_contract_type")
+    @JoinColumn(name = "ID_CONTRACT_TYPE")
     private EmContractTypes idContractType;
 
     @OneToOne
-    @JoinColumn(name = "id_org_work_place")
+    @JoinColumn(name = "ID_ORG_WORK_PLACE")
     private OgOrgWorkPlaces idOrgWorkPlace;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

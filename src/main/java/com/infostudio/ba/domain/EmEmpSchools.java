@@ -53,15 +53,15 @@ public class EmEmpSchools implements Serializable {
     private Instant updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "id_school")
+    @JoinColumn(name = "ID_SCHOOL")
     private RgSchools idSchool;
 
     @OneToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "ID_EMPLOYEE")
     private EmEmployees idEmployee;
 
     @OneToOne
-    @JoinColumn(name = "id_qualification")
+    @JoinColumn(name = "ID_QUALIFICATION")
     private RgQualifications idQualification;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

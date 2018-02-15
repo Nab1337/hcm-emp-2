@@ -21,9 +21,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
 import java.time.Instant;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
@@ -42,20 +40,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = HcmEmpApp.class)
 public class EmEmpSalariesResourceIntTest {
 
-    private static final LocalDate DEFAULT_DATE_FROM = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_FROM = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_DATE_FROM = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DATE_FROM = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final LocalDate DEFAULT_DATE_TO = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_TO = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_DATE_TO = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DATE_TO = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Integer DEFAULT_SALARY_AMOUNT = 1;
-    private static final Integer UPDATED_SALARY_AMOUNT = 2;
+    private static final Double DEFAULT_SALARY_AMOUNT = 1D;
+    private static final Double UPDATED_SALARY_AMOUNT = 2D;
 
-    private static final Integer DEFAULT_SALARY_COEFFICIENT = 1;
-    private static final Integer UPDATED_SALARY_COEFFICIENT = 2;
+    private static final Double DEFAULT_SALARY_COEFFICIENT = 1D;
+    private static final Double UPDATED_SALARY_COEFFICIENT = 2D;
 
-    private static final Integer DEFAULT_WORK_HISTORY_COEFFICIENT = 1;
-    private static final Integer UPDATED_WORK_HISTORY_COEFFICIENT = 2;
+    private static final Double DEFAULT_WORK_HISTORY_COEFFICIENT = 1D;
+    private static final Double UPDATED_WORK_HISTORY_COEFFICIENT = 2D;
 
     private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
@@ -189,6 +187,24 @@ public class EmEmpSalariesResourceIntTest {
 
     @Test
     @Transactional
+    public void checkDateToIsRequired() throws Exception {
+        int databaseSizeBeforeTest = emEmpSalariesRepository.findAll().size();
+        // set the field null
+        emEmpSalaries.setDateTo(null);
+
+        // Create the EmEmpSalaries, which fails.
+
+        restEmEmpSalariesMockMvc.perform(post("/api/em-emp-salaries")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(emEmpSalaries)))
+            .andExpect(status().isBadRequest());
+
+        List<EmEmpSalaries> emEmpSalariesList = emEmpSalariesRepository.findAll();
+        assertThat(emEmpSalariesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllEmEmpSalaries() throws Exception {
         // Initialize the database
         emEmpSalariesRepository.saveAndFlush(emEmpSalaries);
@@ -200,9 +216,9 @@ public class EmEmpSalariesResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(emEmpSalaries.getId().intValue())))
             .andExpect(jsonPath("$.[*].dateFrom").value(hasItem(DEFAULT_DATE_FROM.toString())))
             .andExpect(jsonPath("$.[*].dateTo").value(hasItem(DEFAULT_DATE_TO.toString())))
-            .andExpect(jsonPath("$.[*].salaryAmount").value(hasItem(DEFAULT_SALARY_AMOUNT)))
-            .andExpect(jsonPath("$.[*].salaryCoefficient").value(hasItem(DEFAULT_SALARY_COEFFICIENT)))
-            .andExpect(jsonPath("$.[*].workHistoryCoefficient").value(hasItem(DEFAULT_WORK_HISTORY_COEFFICIENT)))
+            .andExpect(jsonPath("$.[*].salaryAmount").value(hasItem(DEFAULT_SALARY_AMOUNT.doubleValue())))
+            .andExpect(jsonPath("$.[*].salaryCoefficient").value(hasItem(DEFAULT_SALARY_COEFFICIENT.doubleValue())))
+            .andExpect(jsonPath("$.[*].workHistoryCoefficient").value(hasItem(DEFAULT_WORK_HISTORY_COEFFICIENT.doubleValue())))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY.toString())))
@@ -222,9 +238,9 @@ public class EmEmpSalariesResourceIntTest {
             .andExpect(jsonPath("$.id").value(emEmpSalaries.getId().intValue()))
             .andExpect(jsonPath("$.dateFrom").value(DEFAULT_DATE_FROM.toString()))
             .andExpect(jsonPath("$.dateTo").value(DEFAULT_DATE_TO.toString()))
-            .andExpect(jsonPath("$.salaryAmount").value(DEFAULT_SALARY_AMOUNT))
-            .andExpect(jsonPath("$.salaryCoefficient").value(DEFAULT_SALARY_COEFFICIENT))
-            .andExpect(jsonPath("$.workHistoryCoefficient").value(DEFAULT_WORK_HISTORY_COEFFICIENT))
+            .andExpect(jsonPath("$.salaryAmount").value(DEFAULT_SALARY_AMOUNT.doubleValue()))
+            .andExpect(jsonPath("$.salaryCoefficient").value(DEFAULT_SALARY_COEFFICIENT.doubleValue()))
+            .andExpect(jsonPath("$.workHistoryCoefficient").value(DEFAULT_WORK_HISTORY_COEFFICIENT.doubleValue()))
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY.toString()))

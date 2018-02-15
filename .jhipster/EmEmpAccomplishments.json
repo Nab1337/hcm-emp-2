@@ -94,7 +94,7 @@
     "changelogDate": "20180202093527",
     "entityTableName": "em_emp_accomplishments",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

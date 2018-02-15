@@ -76,11 +76,11 @@ public class EmEmpAccomplishments implements Serializable {
     private Instant updatedAt;
 
     @OneToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "ID_EMPLOYEE")
     private EmEmployees idEmployee;
 
     @OneToOne
-    @JoinColumn(name = "id_accomplishment_type")
+    @JoinColumn(name = "ID_ACCOMPLISHMENT_TYPE")
     private AtAccomplishmentTypes idAccomplishmentType;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

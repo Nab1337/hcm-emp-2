@@ -13,7 +13,6 @@ import {
     EmEmpBankAccountsDeleteDialogComponent,
     emEmpBankAccountsRoute,
     emEmpBankAccountsPopupRoute,
-    EmEmpBankAccountsResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         EmEmpBankAccountsService,
         EmEmpBankAccountsPopupService,
-        EmEmpBankAccountsResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

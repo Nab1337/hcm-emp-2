@@ -20,8 +20,7 @@
         },
         {
             "fieldName": "documentBlob",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
+            "fieldType": "String"
         },
         {
             "fieldName": "createdBy",
@@ -43,7 +42,7 @@
     "changelogDate": "20180202093528",
     "entityTableName": "dm_document_links",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

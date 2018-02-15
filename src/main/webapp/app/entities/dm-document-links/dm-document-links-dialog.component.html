@@ -34,21 +34,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.documentBlob" for="field_documentBlob">Document Blob</label>
-            <div>
-                <div *ngIf="dmDocumentLinks.documentBlob" class="form-text text-danger clearfix">
-                    <a class="pull-left" (click)="openFile(dmDocumentLinks.documentBlobContentType, dmDocumentLinks.documentBlob)" jhiTranslate="entity.action.open">open</a><br>
-                    <span class="pull-left">{{dmDocumentLinks.documentBlobContentType}}, {{byteSize(dmDocumentLinks.documentBlob)}}</span>
-                    <button type="button" (click)="dmDocumentLinks.documentBlob=null;dmDocumentLinks.documentBlobContentType=null;"
-                            class="btn btn-secondary btn-xs pull-right">
-                        <span class="fa fa-times"></span>
-                    </button>
-                </div>
-                <input type="file" id="file_documentBlob" (change)="setFileData($event, dmDocumentLinks, 'documentBlob', false)" jhiTranslate="entity.action.addblob"/>
-            </div>
-            <input type="hidden" class="form-control" name="documentBlob" id="field_documentBlob"
+            <input type="text" class="form-control" name="documentBlob" id="field_documentBlob"
                 [(ngModel)]="dmDocumentLinks.documentBlob" />
-            <input type="hidden" class="form-control" name="documentBlobContentType" id="field_documentBlobContentType"
-                [(ngModel)]="dmDocumentLinks.documentBlobContentType" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcmEmpApp.dmDocumentLinks.createdBy" for="field_createdBy">Created By</label>

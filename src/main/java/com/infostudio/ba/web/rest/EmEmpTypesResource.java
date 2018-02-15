@@ -6,14 +6,9 @@ import com.infostudio.ba.domain.EmEmpTypes;
 import com.infostudio.ba.repository.EmEmpTypesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
-import com.infostudio.ba.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,17 +81,14 @@ public class EmEmpTypesResource {
     /**
      * GET  /em-emp-types : get all the emEmpTypes.
      *
-     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of emEmpTypes in body
      */
     @GetMapping("/em-emp-types")
     @Timed
-    public ResponseEntity<List<EmEmpTypes>> getAllEmEmpTypes(Pageable pageable) {
-        log.debug("REST request to get a page of EmEmpTypes");
-        Page<EmEmpTypes> page = emEmpTypesRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/em-emp-types");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
+    public List<EmEmpTypes> getAllEmEmpTypes() {
+        log.debug("REST request to get all EmEmpTypes");
+        return emEmpTypesRepository.findAll();
+        }
 
     /**
      * GET  /em-emp-types/:id : get the "id" emEmpTypes.

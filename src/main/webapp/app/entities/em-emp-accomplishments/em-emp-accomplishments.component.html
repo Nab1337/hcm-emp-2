@@ -15,27 +15,27 @@
     <div class="table-responsive" *ngIf="emEmpAccomplishments">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="title"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.title">Title</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="description"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.description">Description</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="organization"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.organization">Organization</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="location"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.location">Location</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="association"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.association">Association</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="ongoing"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.ongoing">Ongoing</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="link"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.link">Link</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="dateFrom"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateFrom">Date From</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="dateTo"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateTo">Date To</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="occupation"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.occupation">Occupation</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="proficiency"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.proficiency">Proficiency</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="licenceNumber"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.licenceNumber">Licence Number</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="rating"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating">Rating</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="createdBy"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="createdAt"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdAt">Created At</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="updatedBy"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedBy">Updated By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="updatedAt"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idEmployee.id"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.idEmployee">Id Employee</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="idAccomplishmentType.name"><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.idAccomplishmentType">Id Accomplishment Type</span> <span class="fa fa-sort"></span></th>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.title">Title</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.description">Description</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.organization">Organization</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.location">Location</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.association">Association</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.ongoing">Ongoing</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.link">Link</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateFrom">Date From</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.dateTo">Date To</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.occupation">Occupation</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.proficiency">Proficiency</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.licenceNumber">Licence Number</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.rating">Rating</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdBy">Created By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.createdAt">Created At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedBy">Updated By</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.updatedAt">Updated At</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.idEmployee">Id Employee</span></th>
+            <th><span jhiTranslate="hcmEmpApp.emEmpAccomplishments.idAccomplishmentType">Id Accomplishment Type</span></th>
             <th></th>
             </tr>
             </thead>
@@ -98,13 +98,5 @@
             </tr>
             </tbody>
         </table>
-    </div>
-    <div *ngIf="emEmpAccomplishments && emEmpAccomplishments.length">
-        <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-        </div>
-        <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
-        </div>
     </div>
 </div>

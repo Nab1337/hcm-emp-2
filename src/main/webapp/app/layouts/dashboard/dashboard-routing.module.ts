@@ -1,5 +1,5 @@
 import {Injectable, NgModule} from '@angular/core';
-import {Resolve, ActivatedRouteSnapshot,RouterModule, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRouteSnapshot, Resolve, RouterModule, RouterStateSnapshot} from '@angular/router';
 import {EmployeeDashboardComponent} from "../../employees/employee-dashboard/employee-dashboard.component";
 import {DashboardComponent} from "./dashboard.component";
 import {EmployeesComponent} from "../../employees/employees.component";
@@ -7,8 +7,11 @@ import {EmployeeOverviewComponent} from "../../employees/employee-overview/emplo
 import {EmEmployeesService} from "../../entities/em-employees/em-employees.service";
 import {Observable} from "rxjs/Observable";
 import {Principal} from "../../shared/auth/principal.service";
-import {EmEmpOrgWorkPlacesService} from "../../entities/em-emp-org-work-places/em-emp-org-work-places.service";
-import {EmEmployees} from "../../entities/em-employees/em-employees.model";
+import {EmEmployeesResolvePagingParams} from "../../entities/em-employees/em-employees.route";
+import {EmployeesListComponent} from "../../employees/employees-list/employees-list.component";
+import {UserRouteAccessService} from "../../shared/auth/user-route-access-service";
+import {EmEmpOrgWorkPlacesDeletePopupComponent} from "../../entities/em-emp-org-work-places/em-emp-org-work-places-delete-dialog.component";
+import {EmEmpOrgWorkPlacesPopupComponent} from "../../entities/em-emp-org-work-places/em-emp-org-work-places-dialog.component";
 
 @Injectable()
 export class EmployeeResolver implements Resolve<any> {
@@ -61,7 +64,11 @@ const DASHBOARD_ROUTES = [{
                 employee: EmployeeResolver
             }
         },
-        { path: 'employees', component: EmployeesComponent},
+        { path: 'employees', component: EmployeesListComponent,
+            resolve: {
+                'pagingParams': EmEmployeesResolvePagingParams
+            },
+        },
     ]
 }
 ];

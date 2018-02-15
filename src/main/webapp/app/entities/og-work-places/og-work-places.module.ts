@@ -13,7 +13,6 @@ import {
     OgWorkPlacesDeleteDialogComponent,
     ogWorkPlacesRoute,
     ogWorkPlacesPopupRoute,
-    OgWorkPlacesResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         OgWorkPlacesService,
         OgWorkPlacesPopupService,
-        OgWorkPlacesResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

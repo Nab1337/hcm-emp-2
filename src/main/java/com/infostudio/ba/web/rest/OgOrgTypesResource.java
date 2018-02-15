@@ -6,14 +6,9 @@ import com.infostudio.ba.domain.OgOrgTypes;
 import com.infostudio.ba.repository.OgOrgTypesRepository;
 import com.infostudio.ba.web.rest.errors.BadRequestAlertException;
 import com.infostudio.ba.web.rest.util.HeaderUtil;
-import com.infostudio.ba.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,17 +81,14 @@ public class OgOrgTypesResource {
     /**
      * GET  /og-org-types : get all the ogOrgTypes.
      *
-     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of ogOrgTypes in body
      */
     @GetMapping("/og-org-types")
     @Timed
-    public ResponseEntity<List<OgOrgTypes>> getAllOgOrgTypes(Pageable pageable) {
-        log.debug("REST request to get a page of OgOrgTypes");
-        Page<OgOrgTypes> page = ogOrgTypesRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/og-org-types");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
+    public List<OgOrgTypes> getAllOgOrgTypes() {
+        log.debug("REST request to get all OgOrgTypes");
+        return ogOrgTypesRepository.findAll();
+        }
 
     /**
      * GET  /og-org-types/:id : get the "id" ogOrgTypes.

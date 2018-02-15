@@ -13,7 +13,6 @@ import {
     OgOrgTypesDeleteDialogComponent,
     ogOrgTypesRoute,
     ogOrgTypesPopupRoute,
-    OgOrgTypesResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         OgOrgTypesService,
         OgOrgTypesPopupService,
-        OgOrgTypesResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

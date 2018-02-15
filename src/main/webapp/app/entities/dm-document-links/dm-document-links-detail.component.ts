@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { DmDocumentLinks } from './dm-document-links.model';
 import { DmDocumentLinksService } from './dm-document-links.service';
@@ -18,7 +18,6 @@ export class DmDocumentLinksDetailComponent implements OnInit, OnDestroy {
 
     constructor(
         private eventManager: JhiEventManager,
-        private dataUtils: JhiDataUtils,
         private dmDocumentLinksService: DmDocumentLinksService,
         private route: ActivatedRoute
     ) {
@@ -35,13 +34,6 @@ export class DmDocumentLinksDetailComponent implements OnInit, OnDestroy {
         this.dmDocumentLinksService.find(id).subscribe((dmDocumentLinks) => {
             this.dmDocumentLinks = dmDocumentLinks;
         });
-    }
-    byteSize(field) {
-        return this.dataUtils.byteSize(field);
-    }
-
-    openFile(contentType, field) {
-        return this.dataUtils.openFile(contentType, field);
     }
     previousState() {
         window.history.back();
